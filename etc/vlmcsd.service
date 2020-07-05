@@ -1,0 +1,12 @@
+[Unit]
+Description=VLMCSD Daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/vlmcsd.pid
+ExecStart=/usr/local/bin/vlmcsd -i /usr/local/etc/vlmcsd.ini
+ExecStopPost=/usr/bin/rm -f /var/run/vlmcsd.pid
+
+[Install]
+WantedBy=multi-user.target
